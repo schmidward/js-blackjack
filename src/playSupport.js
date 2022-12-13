@@ -30,6 +30,24 @@ function gameStart(deck, playerHand, dealerHand) {
 }
 
 gameStart(deck, playerHand, dealerHand);
-
 console.log(playerHand);
-console.log(dealerHand);
+
+//function to score hands and account for the ace function in the first object
+function scoreHand(hand) {
+	let total = 0;
+	let aces = [];
+	for (let i = 0; i < hand.length; i++) {
+		if (hand[i].value !== "A") {
+			total += hand[i].points;
+		} else {
+			aces.push(hand[i]);
+		}
+	}
+	for (let i = 0; i < aces.length; i++) {
+		total += aces[i].total(total);
+	}
+	return total;
+}
+
+let score = scoreHand(playerHand);
+console.log(score);

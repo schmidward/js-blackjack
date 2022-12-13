@@ -36,6 +36,7 @@ let suits = {
 //The abbriviation correspond to specific card pngs
 function createCard(value, suit) {
     return {
+        value: value,
         points: cardValues[value],
         cardAbbr: `${value}${suits[suit]}`
     };
