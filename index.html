@@ -6,16 +6,30 @@
         <script src="scripts.js"></script>
     </head>
     <body>
-        <h1 id="title">Let's play some Blackjack!</h1>
+        <h1 id="title" class="center">Let's play some Blackjack!</h1>
         <div id="game-space">
+            <p class="center">Dealer's Hand</p>
             <div class="flex-container">
                 <img src="./card-assets/10C.png" alt="10 of Clubs">
                 <img src="./card-assets/9C.png" alt="9 of Clubs">
             </div>
+            <br>
             <div class="flex-container">
                 <img src="./card-assets/10C.png" alt="10 of Clubs">
                 <img src="./card-assets/9C.png" alt="9 of Clubs">
+                <img src="./card-assets/10C.png" alt="10 of Clubs">
+                <img src="./card-assets/9C.png" alt="9 of Clubs">
+                <img src="./card-assets/10C.png" alt="10 of Clubs">
             </div>
+            <p class="center" id="playerName">Player's Hand</p>
         </div>
+        <div class="flex-container" id="user-buttons">
+            <button id="buttonA">buttonA</button>
+            <button id="buttonB">buttonB</button>
+        </div>
+        <div class="flex-container" id="name-input"style="visibility: hidden;">
+            <input type="text" id="userNameInput" name="Player" placeholder="Enter your name"/>
+            <button id="saveName">Save</button> 
+        </div> 
     </body>
 </html>

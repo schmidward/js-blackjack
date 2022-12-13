@@ -4,21 +4,33 @@ html {
     margin: 0 auto !important;   
 }
 
-#title {
+body {
+    margin: 0px 80px;
+}
+
+.center {
     text-align: center;
 }
 
 #game-space {
-    margin: 20px 80px;
+    margin: 20px 0px;
     padding: 10px;
     border: 2px solid black;
 }
 
 .flex-container {
     display: flex;
+    flex-wrap: wrap;
     background-color: lightslategray;
+    padding: 5px;
+    justify-content: center;
+}
+
+button {
+    margin: 0px 10px;
 }
 
 img {
-    width: 15%;
+    width: 12.5%;
+    padding: 0px 2.5px;
 }
