@@ -1,0 +1,24 @@
+html {
+    max-width: 1200px;
+    min-width: 300px;
+    margin: 0 auto !important;   
+}
+
+#title {
+    text-align: center;
+}
+
+#game-space {
+    margin: 20px 80px;
+    padding: 10px;
+    border: 2px solid black;
+}
+
+.flex-container {
+    display: flex;
+    background-color: lightslategray;
+}
+
+img {
+    width: 15%;
+}
