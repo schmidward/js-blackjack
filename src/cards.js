@@ -1,5 +1,8 @@
 //File for card deck created using simple objects in JavaScript
 
+const { isModuleDeclaration } = require("babel-types");
+
+//Aces are a function that retuns 11 if less than or equal to 10 and 1 if greater than 10
 let cardValues = {
     2: 2,
     3: 3,
@@ -29,15 +32,14 @@ let suits = {
     diamonds: "D",
 };
 
+//This function creates an individual card with a key:value for points and a key:value for the card abbriviation
+//The abbriviation correspond to specific card pngs
 function createCard(value, suit) {
     return {
-        value: value,
         points: cardValues[value],
         cardAbbr: `${value}${suits[suit]}`
     };
 }
-console.log(createCard("J", "clubs"));
-console.log(Object.keys(cardValues));
 
 
 
@@ -52,4 +54,8 @@ function makeDeck() {
     }
     return deck;
 }
-console.log(makeDeck());
+
+module.exports = {
+    getDeck: makeDeck,
+}
+
