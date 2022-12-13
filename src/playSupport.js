@@ -17,10 +17,6 @@ function dealCard(deck, hand) {
     hand.push(deck.shift())
 }
 
-let playerHand = [];
-let dealerHand = [];
-let deck = [];
-
 //function to deal first four cards
 function gameStart(deck, playerHand, dealerHand) {
     dealCard(deck, playerHand);
@@ -29,8 +25,6 @@ function gameStart(deck, playerHand, dealerHand) {
     dealCard(deck, dealerHand);
 }
 
-gameStart(deck, playerHand, dealerHand);
-console.log(playerHand);
 
 //function to score hands and account for the ace function in the first object
 function scoreHand(hand) {
@@ -49,5 +43,9 @@ function scoreHand(hand) {
 	return total;
 }
 
-let score = scoreHand(playerHand);
-console.log(score);
+module.exports = {
+    shuffle: shuffleDeck,
+    dealCard: dealCard,
+    dealFour: gameStart,
+    scoreHand: scoreHand,
+} 
