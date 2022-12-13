@@ -38,7 +38,7 @@ function scoreHand(hand) {
 		}
 	}
 	for (let i = 0; i < aces.length; i++) {
-		total += aces[i].total(total);
+		total += aces[i].points(total);
 	}
 	return total;
 }
