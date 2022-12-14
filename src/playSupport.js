@@ -43,6 +43,8 @@ function scoreHand(hand) {
 	return total;
 }
 
+//TODO: Write display functions to be called during playGame()
+
 module.exports = {
     shuffle: shuffleDeck,
     dealCard: dealCard,

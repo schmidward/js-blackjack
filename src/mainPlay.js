@@ -18,6 +18,7 @@ function playGame() {
         let playerScore = scoreHand(playerHand);
         let dealerScore = scoreHand(dealerHand);
         
+        //TODO: CALL display functions which will render the proper cards
         console.log(dealerHand);
         console.log(playerHand);
 
@@ -41,6 +42,7 @@ function playGame() {
                 if (hitOrStay === "H") {
                     dealCard(deck, playerHand);
                     playerScore = scoreHand(playerHand);
+                    //TODO: call display function
                     console.log(playerHand);
                 } else {
                     playerContinue = false;

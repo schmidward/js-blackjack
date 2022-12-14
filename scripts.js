@@ -5,31 +5,44 @@ window.addEventListener("load", function() {
     const rightButton = document.getElementById('buttonB');
     const buttonContainer = document.getElementById('user-buttons');
     const nameInput = document.getElementById('userNameInput');
-    const saveButton = document.getElementById('saveName');
+    const startGame = document.getElementById('startGame');
     const playerName = document.getElementById('playerName');
     const nameInputContainer = document.getElementById('name-input');
     const gameMessages = document.getElementById('game-messages');
 
-    leftButton.innerHTML = "Yes";
-    rightButton.innerHTML = "No";
+    let activeGame = false;
+
+    leftButton.innerHTML = "Hit";
+    rightButton.innerHTML = "Stay";
 
     nameInput.addEventListener('input', function() {
         playerName.innerHTML = `${nameInput.value}'s hand`;
     });
 
-    saveButton.addEventListener('click', function(event) {
+    //One event listener to update the name and what not
+    startGame.addEventListener('click', function() {
         playerName.innerHTML = `${nameInput.value}'s hand`;
         nameInputContainer.style.visibility = 'hidden';
         buttonContainer.style.visibility = 'visible';
     });
 
-    leftButton.addEventListener('click', function() {
+    //One to run the program
+    startGame.addEventListener('click', function() {
+        
+    })
 
+    leftButton.addEventListener('click', function() {
+        console.log("I clicked the left button.")
+        activeGame = true;
+        console.log(activeGame);
     });
 
     rightButton.addEventListener('click', function() {
 
     });
+ 
+
+
 
 
 
