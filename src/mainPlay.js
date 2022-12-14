@@ -1,45 +1,12 @@
-  function playGame() {
-    // function getPromiseFromEvent(item, event) {
-    //     return new Promise((resolve) => {
-    //       const listener = () => {
-    //         item.removeEventListener(event, listener);
-    //         resolve();
-    //       }
-    //       item.addEventListener(event, listener);
-    //     })
-    //   }
-      
-    //   async function hit() {
-    //     await getPromiseFromEvent(leftButton, 'click');
-    //     console.log('I clicked the button on the left');
-    //     dealCard(deck, playerHand);
-    //     playerScore = scoreHand(playerHand);
-    //     displayPlayerHand(playerHand);
-    //   }
-    //   hit();
+function playGame() {
     
-    //   async function stay() {
-    //     await getPromiseFromEvent(rightButton, 'click');
-    //     console.log('I clicked the button on the right');
-    //     hasStayed = true;
-    //     playerContinue = false;
-    //     dealerContinue = true;
-    //   }
-    //   stay();
-
-      const leftButton = document.getElementById('buttonA');
-      const rightButton = document.getElementById('buttonB');
-      
-      leftButton.innerHTML = "Hit";
-      rightButton.innerHTML = "Stay";
-
-
     let deck = makeDeck();
     shuffle(deck);
     let gameOver = false;
 
     while (!gameOver) {
-                
+        
+        
         let playerHand = [];
         let dealerHand = [];
                 
@@ -55,7 +22,6 @@
         let dealerContinue = false;
 
         let gameResult = "";
-        
 
         while (playerContinue) {
             if (playerScore === 21) {
@@ -67,10 +33,17 @@
                 playerContinue = false;
                 gameOver = true;
             } else {
-                let hasStayed = false;
-                    while (!hasStayed) {
-                        
-                    }        
+                let hitOrStay = input.question('Hit or Stay? "H" = Hit, "S" = Stay')
+                
+                if (hitOrStay === "H") {
+                    dealCard(deck, playerHand);
+                    playerScore = scoreHand(playerHand);
+                    displayPlayerHand(playerHand);
+                    console.log(playerHand);
+                } else {
+                    playerContinue = false;
+                    dealerContinue = true;
+                }
             }
         }
         

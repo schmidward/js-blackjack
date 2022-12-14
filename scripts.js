@@ -1,6 +1,9 @@
+
 //TODO: JavaScripting to include event listeners for the buttons and propertly update them according to what the game is doing
 window.addEventListener("load", function() {
 
+    const leftButton = document.getElementById('buttonA');
+    const rightButton = document.getElementById('buttonB');
     const buttonContainer = document.getElementById('user-buttons');
     const nameInput = document.getElementById('userNameInput');
     const startGame = document.getElementById('startGame');
@@ -8,6 +11,10 @@ window.addEventListener("load", function() {
     const nameInputContainer = document.getElementById('name-input');
     const gameMessages = document.getElementById('game-messages');
 
+    let activeGame = false;
+
+    leftButton.innerHTML = "Hit";
+    rightButton.innerHTML = "Stay";
 
     nameInput.addEventListener('input', function() {
         playerName.innerHTML = `${nameInput.value}'s hand`;
@@ -24,6 +31,19 @@ window.addEventListener("load", function() {
     startGame.addEventListener('click', function() {
         playGame();
     });
+
+    leftButton.addEventListener('click', function() {
+        console.log("I clicked the left button.")
+        activeGame = true;
+        console.log(activeGame);
+    });
+
+    rightButton.addEventListener('click', function() {
+
+    });
+ 
+
+
 
 
 
