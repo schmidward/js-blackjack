@@ -54,6 +54,6 @@ function makeDeck() {
     return deck;
 }
 
-modele.exports = {
+module.exports = {
     getDeck: makeDeck,
 }

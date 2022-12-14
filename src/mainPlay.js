@@ -1,5 +1,7 @@
-const { shuffle, dealOne, dealFour, scoreHand } = require('./playSupport.js');
+const { shuffle, dealCard, dealFour, scoreHand } = require('./playSupport.js');
 const { getDeck } = require('./cards.js');
+const input = require('readline-sync');
+
 
 function playGame() {
     
@@ -15,7 +17,10 @@ function playGame() {
 
         let playerScore = scoreHand(playerHand);
         let dealerScore = scoreHand(dealerHand);
-    
+        
+        console.log(dealerHand);
+        console.log(playerHand);
+
         let playerContinue = true;
         let dealerContinue = false;
 
@@ -25,28 +30,31 @@ function playGame() {
             if (playerScore === 21) {
                 gameResult = 'Player Wins!';
                 playerContinue = false;
+                gameOver = true;
             } else if (playerScore > 21) {
                 gameResult = 'Player Busts';
                 playerContinue = false;
+                gameOver = true;
             } else {
-                let hitOrStay = "hit" //TODO: RESPONSE BASED ON BUTTONS ON PAGE HTML PAGE
-            
-                if (hitOrStay === "hit") {
+                let hitOrStay = input.question('Hit or Stay? "H" = Hit, "S" = Stay')
+                
+                if (hitOrStay === "H") {
                     dealCard(deck, playerHand);
                     playerScore = scoreHand(playerHand);
+                    console.log(playerHand);
                 } else {
                     playerContinue = false;
                     dealerContinue = true;
                 }
             }
         }
-
+        
         if (dealerContinue) {
             while (dealerScore <= 16) {
                 dealCard(deck, dealerHand);
                 dealerScore = scoreHand(dealerHand);
             }
-
+            
             if (dealerScore > 21) {
                 gameResult = 'Dealer Busts';
             } else if (dealerScore < playerScore) {
@@ -56,8 +64,14 @@ function playGame() {
             } else {
                 gameResult = 'Dealer Beats';
             }
-            gameOver = true;
         }
+        console.log(gameResult);
+        let playAgain = input.question('Play again? Y or N');
+            if (playAgain === "N") {
+                gameOver = true;
+            }
     }
-
+    return;
 }
+
+playGame();

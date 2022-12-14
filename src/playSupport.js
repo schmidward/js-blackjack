@@ -45,7 +45,7 @@ function scoreHand(hand) {
 
 module.exports = {
     shuffle: shuffleDeck,
-    dealOne: dealCard,
+    dealCard: dealCard,
     dealFour: gameStart,
     scoreHand: scoreHand,
 }
