@@ -1,3 +1,4 @@
+const { getDeck } = require('./cards.js');
 
 
 function shuffleDeck(deck) {
@@ -44,6 +45,26 @@ function scoreHand(hand) {
 }
 
 //TODO: Write display functions to be called during playGame()
+
+let playerHand = [];
+let dealerHand = [];
+let deck = getDeck();
+shuffleDeck(deck);
+
+gameStart(deck, playerHand, dealerHand);
+
+function displayPlayerHand(hand) {
+    //const playerDisplay = document.getElementById('player-hand');
+
+    let displayDummy = []
+
+    for (let i = 0; i < hand.length; i++) {
+        displayDummy.push(`<img src="./card-assets/${hand[i].cardAbbr}.png" alt="${hand[i].value} of ${hand[i].suit}">`)
+    }
+    console.log(displayDummy);
+}
+
+displayPlayerHand(playerHand);
 
 module.exports = {
     shuffle: shuffleDeck,
