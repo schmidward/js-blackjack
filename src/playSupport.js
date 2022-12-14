@@ -1,4 +1,4 @@
-const { getDeck } = require('./cards.js');
+
 
 function shuffleDeck(deck) {
     for (let i = deck.length - 1; i > 0; i--){
@@ -45,7 +45,7 @@ function scoreHand(hand) {
 
 module.exports = {
     shuffle: shuffleDeck,
-    dealCard: dealCard,
+    dealOne: dealCard,
     dealFour: gameStart,
     scoreHand: scoreHand,
-} 
+}

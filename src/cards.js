@@ -1,7 +1,5 @@
 //File for card deck created using simple objects in JavaScript
 
-const { isModuleDeclaration } = require("babel-types");
-
 //Aces are a function that retuns 11 if less than or equal to 10 and 1 if greater than 10
 let cardValues = {
     2: 2,
@@ -56,7 +54,6 @@ function makeDeck() {
     return deck;
 }
 
-module.exports = {
+modele.exports = {
     getDeck: makeDeck,
 }
-

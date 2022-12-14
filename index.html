@@ -4,6 +4,9 @@
         <title>Simple Blackjack game</title>
         <link rel="stylesheet" type="text/css" href="styles.css">
         <script src="scripts.js"></script>
+        <script type="module" src="./src/mainPlay.js"></script>
+        <script type="module" src="./src/playSupport.js"></script>
+        <script type="module" src="./src/cards.js"></script>
     </head>
     <body>
         <h1 id="title" class="center">Let's play some Blackjack!</h1>
@@ -23,11 +26,17 @@
             </div>
             <p class="center" id="playerName">Player's Hand</p>
         </div>
-        <div class="flex-container" id="user-buttons">
+        <!-- TODO: Create div/container for text from the game depending on how it's progressing-->
+        <!-- TODO: Code buttons to be responsive depending on the game-->
+        <!-- TODO: Code input and save button to update player's name at beginning of game and then return to being invisible-->
+        <div>
+            <p id="game-messages">Please enter your first name to continue:</p>
+        </div>
+        <div class="flex-container" id="user-buttons" style="visibility: hidden">
             <button id="buttonA">buttonA</button>
             <button id="buttonB">buttonB</button>
         </div>
-        <div class="flex-container" id="name-input"style="visibility: hidden;">
+        <div class="flex-container" id="name-input" style="visibility: visible;">
             <input type="text" id="userNameInput" name="Player" placeholder="Enter your name"/>
             <button id="saveName">Save</button> 
         </div> 
