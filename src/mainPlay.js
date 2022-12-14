@@ -1,26 +1,22 @@
-const { shuffle, dealCard, dealFour, scoreHand } = require('./playSupport.js');
-const { getDeck } = require('./cards.js');
-const input = require('readline-sync');
-
-
 function playGame() {
     
-    let deck = getDeck();
+    let deck = makeDeck();
     shuffle(deck);
     let gameOver = false;
 
     while (!gameOver) {
+        
+        
         let playerHand = [];
         let dealerHand = [];
-    
-        dealFour(deck, playerHand, dealerHand);
+                
+        gameStart(deck, playerHand, dealerHand);
 
         let playerScore = scoreHand(playerHand);
         let dealerScore = scoreHand(dealerHand);
         
-        //TODO: CALL display functions which will render the proper cards
-        console.log(dealerHand);
-        console.log(playerHand);
+        displayPlayerHand(playerHand);
+        displayDealerHand(dealerHand);
 
         let playerContinue = true;
         let dealerContinue = false;
@@ -42,7 +38,7 @@ function playGame() {
                 if (hitOrStay === "H") {
                     dealCard(deck, playerHand);
                     playerScore = scoreHand(playerHand);
-                    //TODO: call display function
+                    displayPlayerHand(playerHand);
                     console.log(playerHand);
                 } else {
                     playerContinue = false;
@@ -52,9 +48,11 @@ function playGame() {
         }
         
         if (dealerContinue) {
+            displayDealerHand(dealerHand, true);
             while (dealerScore <= 16) {
                 dealCard(deck, dealerHand);
                 dealerScore = scoreHand(dealerHand);
+                displayDealerHand(dealerHand, true);
             }
             
             if (dealerScore > 21) {
@@ -67,13 +65,7 @@ function playGame() {
                 gameResult = 'Dealer Beats';
             }
         }
-        console.log(gameResult);
-        let playAgain = input.question('Play again? Y or N');
-            if (playAgain === "N") {
-                gameOver = true;
-            }
+        gameOver = true;
     }
     return;
 }
-
-playGame();

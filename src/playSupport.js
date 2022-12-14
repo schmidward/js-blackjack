@@ -1,7 +1,4 @@
-const { getDeck } = require('./cards.js');
-
-
-function shuffleDeck(deck) {
+function shuffle(deck) {
     for (let i = deck.length - 1; i > 0; i--){
         let currentCard = deck[i];
         let randomIndex = Math.floor(Math.random() * (i + 1));
@@ -13,7 +10,7 @@ function shuffleDeck(deck) {
 function dealCard(deck, hand) {
     if (deck.length === 0) {
         deck = getDeck()
-        shuffleDeck(deck);
+        shuffle(deck);
     }
     hand.push(deck.shift())
 }
@@ -46,29 +43,29 @@ function scoreHand(hand) {
 
 //TODO: Write display functions to be called during playGame()
 
-let playerHand = [];
-let dealerHand = [];
-let deck = getDeck();
-shuffleDeck(deck);
-
-gameStart(deck, playerHand, dealerHand);
-
 function displayPlayerHand(hand) {
-    //const playerDisplay = document.getElementById('player-hand');
+    const playerDisplay = document.getElementById('player-hand');
 
-    let displayDummy = []
+    playerDisplay.innerHTML = ``;
 
     for (let i = 0; i < hand.length; i++) {
-        displayDummy.push(`<img src="./card-assets/${hand[i].cardAbbr}.png" alt="${hand[i].value} of ${hand[i].suit}">`)
+       playerDisplay.innerHTML += `<img src="./card-assets/${hand[i].cardAbbr}.png" alt="${hand[i].value} of ${hand[i].suit}">`
     }
-    console.log(displayDummy);
 }
 
-displayPlayerHand(playerHand);
+function displayDealerHand(hand, fistCardVisible = false) {
+    const dealerDisplay = document.getElementById('dealer-hand');
 
-module.exports = {
-    shuffle: shuffleDeck,
-    dealCard: dealCard,
-    dealFour: gameStart,
-    scoreHand: scoreHand,
+    if (!fistCardVisible) {
+        dealerDisplay.innerHTML = '<img src="./card-assets/card-back.png" alt="Card back">'
+        
+        for (let i = 1; i < hand.length; i++) {
+            dealerDisplay.innerHTML += `<img src="./card-assets/${hand[i].cardAbbr}.png" alt="${hand[i].value} of ${hand[i].suit}">`
+        }
+    } else {
+        for (let i = 0; i < hand.length; i++) {
+            dealerDisplay.innerHTML += `<img src="./card-assets/${hand[i].cardAbbr}.png" alt="${hand[i].value} of ${hand[i].suit}">`
+        }
+    }
+
 }

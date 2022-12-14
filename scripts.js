@@ -28,8 +28,8 @@ window.addEventListener("load", function() {
 
     //One to run the program
     startGame.addEventListener('click', function() {
-        
-    })
+        playGame();
+    });
 
     leftButton.addEventListener('click', function() {
         console.log("I clicked the left button.")

@@ -35,11 +35,11 @@ let suits = {
 function createCard(value, suit) {
     return {
         value: value,
+        suit: suit,
         points: cardValues[value],
         cardAbbr: `${value}${suits[suit]}`
     };
 }
-
 
 
 function makeDeck() {
@@ -52,8 +52,4 @@ function makeDeck() {
         }
     }
     return deck;
-}
-
-module.exports = {
-    getDeck: makeDeck,
 }

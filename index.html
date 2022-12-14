@@ -4,25 +4,22 @@
         <title>Simple Blackjack game</title>
         <link rel="stylesheet" type="text/css" href="styles.css">
         <script src="scripts.js"></script>
-        <script type="module" src="./src/mainPlay.js"></script>
-        <script type="module" src="./src/playSupport.js"></script>
-        <script type="module" src="./src/cards.js"></script>
+        <script src="./src/mainPlay.js"></script>
+        <script src="./src/playSupport.js"></script>
+        <script src="./src/cards.js"></script>
     </head>
     <body>
         <h1 id="title" class="center">Let's play some Blackjack!</h1>
         <div id="game-space">
             <p class="center">Dealer's Hand</p>
-            <div class="flex-container">
-                <img src="./card-assets/10C.png" alt="10 of Clubs">
-                <img src="./card-assets/9C.png" alt="9 of Clubs">
+            <div class="flex-container" id="dealer-hand">
+                <img src="./card-assets/card-back.png" alt="Card back">
+                <img src="./card-assets/card-back.png" alt="Card back">
             </div>
             <br>
-            <div class="flex-container">
-                <img src="./card-assets/10C.png" alt="10 of Clubs">
-                <img src="./card-assets/9C.png" alt="9 of Clubs">
-                <img src="./card-assets/10C.png" alt="10 of Clubs">
-                <img src="./card-assets/9C.png" alt="9 of Clubs">
-                <img src="./card-assets/10C.png" alt="10 of Clubs">
+            <div class="flex-container" id="player-hand">
+                <img src="./card-assets/card-back.png" alt="Card back">
+                <img src="./card-assets/card-back.png" alt="Card back">
             </div>
             <p class="center" id="playerName">Player's Hand</p>
         </div>
