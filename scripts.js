@@ -32,24 +32,23 @@ window.addEventListener("load", function() {
         leftButton.style.visibility = 'visible';
         rightButton.style.visibility = 'visible';
         startGame.style.visibility = 'hidden';
+        gameMessages.innerHTML = 'Choose if you want to Hit or Stay';
         let deck = makeDeck();
-        playGame(deck, playerHand, dealerHand);
+        let firstCheck = playGame(deck);
+        if (firstCheck) {
+            gameMessages.innerHTML = `Game result: ${firstCheck}`;
+        }
         leftButton.addEventListener('click', function() {
-            hit(deck);
+            let result = hit(deck);
+            if (result) {
+                gameMessages.innerHTML = `Game result: ${result}`;
+            }
         });
         rightButton.addEventListener('click', function() {
-            console.log('I clicked this button');
-            stay(deck);
+            let result = stay(deck);
+            gameMessages.innerHTML = `Game result: ${result}`;
         });
     });
     
-
-
-
-
-
-
-
-
 })
 

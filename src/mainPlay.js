@@ -124,7 +124,10 @@ function displayDealerHand(hand, fistCardVisible = false) {
 
 let playerHand = [];
 let dealerHand = [];
+let dealerScore = scoreHand(dealerHand);
+let playerScore = scoreHand(playerHand);
 
+let gameResult = "";
 
 function playGame(deck) {
 
@@ -134,11 +137,17 @@ function playGame(deck) {
     
     displayPlayerHand(playerHand);
     displayDealerHand(dealerHand);
+
+    dealerScore = scoreHand(dealerHand);
+    playerScore = scoreHand(playerHand);
+
+    if (playerScore === 21) {
+        gameResult = 'Player Wins!';
+    }
+    return gameResult;
 }
 
-let dealerScore = scoreHand(dealerHand);
-let playerScore = scoreHand(playerHand);
-let gameResult = "";
+
 
 function hit(deck) {
     dealCard(deck, playerHand);
