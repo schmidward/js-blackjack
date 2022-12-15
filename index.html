@@ -25,12 +25,15 @@
         <!-- TODO: Code buttons to be responsive depending on the game-->
         <!-- TODO: Code input and save button to update player's name at beginning of game and then return to being invisible-->
         <div>
-            <p id="game-messages">Please enter your first name to continue:</p>
+            <p id="game-messages">Enter your name if you want, otherwise hit save:</p>
         </div>
-        <div class="flex-container" id="user-buttons">
-            <button id="buttonA" style="visibility: hidden">buttonA</button>
-            <button id="buttonB" style="visibility: hidden">buttonB</button>
+        <div class="flex-container">
+            <button id="buttonA" style="visibility: hidden">Hit</button>
+            <button id="buttonB" style="visibility: hidden">Stay</button>
+        </div>
+        <div class="flex-container">
             <button id="start-game" style="visibility: hidden">Start Game!</button>
+            <button id="play-again" style="visibility: hidden">Play Again?</button>
         </div>
         <div class="flex-container" id="name-input" style="visibility: visible;">
             <input type="text" id="userNameInput" name="Player" placeholder="Enter your name"/>

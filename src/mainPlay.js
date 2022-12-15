@@ -122,14 +122,19 @@ function displayDealerHand(hand, fistCardVisible = false) {
 
 }
 
-let playerHand = [];
-let dealerHand = [];
-let dealerScore = scoreHand(dealerHand);
-let playerScore = scoreHand(playerHand);
+function finalMessage (leftButton, rightButton, playAgain) {
+    leftButton.style.visibility = 'hidden';
+    rightButton.style.visibility = 'hidden';
+    playAgain.style.visibility = 'visible';
 
-let gameResult = "";
+    return;
+}
 
-function playGame(deck) {
+
+
+
+function playGame(deck, playerHand, dealerHand, playerScore, dealerScore) {
+    let gameResult = "";
 
     shuffle(deck);
     
@@ -147,22 +152,25 @@ function playGame(deck) {
     return gameResult;
 }
 
-
-
-function hit(deck) {
-    dealCard(deck, playerHand);
-    displayPlayerHand(playerHand);
-    playerScore = scoreHand(playerHand);
-    console.log(playerScore);
+function secondCheck(playerScore) {
+    let gameResult = "";
     if (playerScore === 21) {
         gameResult = 'Player Wins!';
     } else if (playerScore > 21) {
         gameResult = 'Player Busts';       
-}
-    return gameResult;
+    }
+        return gameResult;
 }
 
-function stay(deck) {
+function hit(deck, playerHand, playerScore) {
+    dealCard(deck, playerHand);
+    displayPlayerHand(playerHand);
+    playerScore = scoreHand(playerHand);
+    console.log(playerScore);
+    return playerScore;
+}
+
+function stay(deck, dealerHand, dealerScore, playerScore) {
     displayDealerHand(dealerHand, true);
         dealerScore = scoreHand(dealerHand);
             while (dealerScore <= 16) {
