@@ -183,7 +183,3 @@ function stay(deck) {
             }
     return gameResult;
 }
-
-
-
-

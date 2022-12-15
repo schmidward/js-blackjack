@@ -12,9 +12,6 @@ window.addEventListener("load", function() {
     leftButton.innerHTML = "Hit";
     rightButton.innerHTML = "Stay";
 
-    
-
-
 
     nameInput.addEventListener('input', function() {
         playerName.innerHTML = `${nameInput.value}'s hand`;
