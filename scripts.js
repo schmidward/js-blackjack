@@ -60,7 +60,6 @@ window.addEventListener("load", function() {
                 gameMessages.innerHTML = `Game result: ${result}`;
                 finalMessage(leftButton, rightButton, playAgain);
             }
-            // return playerScore;
         }
         rightButton.onclick = function() {
             let result = stay(deck, dealerHand, dealerScore, playerScore);
