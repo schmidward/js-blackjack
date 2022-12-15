@@ -1,47 +1,51 @@
-
 //TODO: JavaScripting to include event listeners for the buttons and propertly update them according to what the game is doing
 window.addEventListener("load", function() {
-
     const leftButton = document.getElementById('buttonA');
     const rightButton = document.getElementById('buttonB');
-    const buttonContainer = document.getElementById('user-buttons');
     const nameInput = document.getElementById('userNameInput');
-    const startGame = document.getElementById('startGame');
+    const saveName = document.getElementById('save-name');
     const playerName = document.getElementById('playerName');
     const nameInputContainer = document.getElementById('name-input');
+    const startGame = document.getElementById('start-game');
     const gameMessages = document.getElementById('game-messages');
-
-    let activeGame = false;
 
     leftButton.innerHTML = "Hit";
     rightButton.innerHTML = "Stay";
+
+    
+
+
 
     nameInput.addEventListener('input', function() {
         playerName.innerHTML = `${nameInput.value}'s hand`;
     });
 
     //One event listener to update the name and what not
-    startGame.addEventListener('click', function() {
+    saveName.addEventListener('click', function() {
         playerName.innerHTML = `${nameInput.value}'s hand`;
         nameInputContainer.style.visibility = 'hidden';
-        buttonContainer.style.visibility = 'visible';
+        startGame.style.visibility = 'visible';
     });
 
     //One to run the program
     startGame.addEventListener('click', function() {
-        playGame();
+        leftButton.style.visibility = 'visible';
+        rightButton.style.visibility = 'visible';
+        startGame.style.visibility = 'hidden';
+        let deck = makeDeck();
+        playGame(deck, playerHand, dealerHand);
+        leftButton.addEventListener('click', function() {
+            hit(deck);
+        });
+        rightButton.addEventListener('click', function() {
+            console.log('I clicked this button');
+            stay(deck);
+        });
     });
+    
 
-    leftButton.addEventListener('click', function() {
-        console.log("I clicked the left button.")
-        activeGame = true;
-        console.log(activeGame);
-    });
 
-    rightButton.addEventListener('click', function() {
 
-    });
- 
 
 
 

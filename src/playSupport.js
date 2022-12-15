@@ -9,7 +9,7 @@ function shuffle(deck) {
 
 function dealCard(deck, hand) {
     if (deck.length === 0) {
-        deck = getDeck()
+        deck = makeDeck();
         shuffle(deck);
     }
     hand.push(deck.shift())
@@ -40,8 +40,6 @@ function scoreHand(hand) {
 	}
 	return total;
 }
-
-//TODO: Write display functions to be called during playGame()
 
 function displayPlayerHand(hand) {
     const playerDisplay = document.getElementById('player-hand');

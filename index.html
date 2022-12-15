@@ -5,8 +5,6 @@
         <link rel="stylesheet" type="text/css" href="styles.css">
         <script src="scripts.js"></script>
         <script src="./src/mainPlay.js"></script>
-        <script src="./src/playSupport.js"></script>
-        <script src="./src/cards.js"></script>
     </head>
     <body>
         <h1 id="title" class="center">Let's play some Blackjack!</h1>
@@ -29,13 +27,14 @@
         <div>
             <p id="game-messages">Please enter your first name to continue:</p>
         </div>
-        <div class="flex-container" id="user-buttons" style="visibility: hidden">
-            <button id="buttonA">buttonA</button>
-            <button id="buttonB">buttonB</button>
+        <div class="flex-container" id="user-buttons">
+            <button id="buttonA" style="visibility: hidden">buttonA</button>
+            <button id="buttonB" style="visibility: hidden">buttonB</button>
+            <button id="start-game" style="visibility: hidden">Start Game!</button>
         </div>
         <div class="flex-container" id="name-input" style="visibility: visible;">
             <input type="text" id="userNameInput" name="Player" placeholder="Enter your name"/>
-            <button id="startGame">Start Game</button> 
+            <button id="save-name">Save</button> 
         </div> 
     </body>
 </html>
