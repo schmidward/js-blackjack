@@ -5,9 +5,33 @@
         <link rel="stylesheet" type="text/css" href="styles.css">
         <script src="scripts.js"></script>
         <script src="./src/mainPlay.js"></script>
+        <style>
+            #name-input {
+                background-color: #ffffff;
+            }
+        </style>
     </head>
     <body>
         <h1 id="title" class="center">Let's play some Blackjack!</h1>
+        <div class="flex-container" id="name-input" style="visibility: visible">
+            <input type="text" id="userNameInput" name="Player" placeholder="Enter your name"/>
+            <button id="save-name">Save</button> 
+        </div>
+        <div id="instructions">
+            <div id="inline"><span id="bolder">Rules and instructions</span></div>
+            <p class="justify"><b>The objective</b> in Blackjack is for the player to <b>beat the dealer</b> with a hand that's as close to 21 points as possible <em>without going over</em>. The player or dealer busts if they go over 21 points.</p>
+            <p class="justify">Each card in the hand is worth as many points as the number on it (e.g. 4♣ = 4 points). Face cards are each worth <b>10 points</b> and Aces are worth <b>11 points,</b> unless the <b>total of all other cards in the hand</b> is greater than 10. Then Aces are worth 1 point.</p>
+            <p class="justify">How to play:</p>
+            <ol>
+                <li>When prompted, click "Start Game!" <b>below</b> the square with the cards in it</li>
+                <li>The player (you) and the dealer will each be dealt two cards from a shuffled deck. The player's cards will both be face up, while one of the dealer's cards will be hidden.</li>
+                <li>Decide if you'd like to "Hit" or "Stay" with the buttons below. Pressing "Hit" will add one card to your hand. Pressing "Stay" won't add any cards to your hand and play moves to the dealer. <em>Be careful, hit too many times and you may bust.</em></li>
+                <li>The Dealer <b>must continue hitting</b> until they have more than <b>16 points</b> in their hand or they bust.</li>
+                <li>The game is then scored and whomever has the higher score wins.</li>
+            </ol>
+        </div>
+        <button id="hide-instructions" style="visibility: visible">Hide these instructions</button>
+        <button id="show-instructions" style="visibility: hidden">Show instructions</button>
         <div id="game-space">
             <p class="center">Dealer's Hand</p>
             <div class="flex-container" id="dealer-hand">
@@ -32,12 +56,9 @@
             <button id="start-game" style="visibility: hidden">Start Game!</button>
             <button id="play-again" style="visibility: hidden">Play Again?</button>
         </div>
-        <div class="flex-container" id="name-input" style="visibility: visible;">
-            <input type="text" id="userNameInput" name="Player" placeholder="Enter your name"/>
-            <button id="save-name">Save</button> 
-        </div> 
     </body>
-    <footer>
+    <footer class="center">
+        <p><a id="bottom-link" href="https://github.com/schmidward/js-blackjack">Read more about this project.</a></p>
         <p>&copy; Eric D. Schmid 2022</p>
     </footer>
 </html>
