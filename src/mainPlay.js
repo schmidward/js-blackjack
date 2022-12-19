@@ -1,3 +1,5 @@
+//There are two objects to represent the deck. The first initializes the numbers 2 - Ace and the second is for suits. 
+//Notice that the A: VALUE is a function that will dynamically return 11 or 1 depending on the point total of the hand.
 let cardValues = {
     2: 2,
     3: 3,
@@ -38,7 +40,7 @@ function createCard(value, suit) {
     };
 }
 
-
+//This function creates a full 52 card deck as an array of objects by looping through the numbers for each suit
 function makeDeck() {
     let deck = [];
     let allValues = Object.keys(cardValues);
@@ -51,6 +53,7 @@ function makeDeck() {
     return deck;
 }
 
+//This function shuffles the deck 
 function shuffle(deck) {
     for (let i = deck.length - 1; i > 0; i--){
         let currentCard = deck[i];
@@ -60,6 +63,7 @@ function shuffle(deck) {
     }
 }
 
+//This helper function deals a single card and makes a new deck in case there aren't any more cards
 function dealCard(deck, hand) {
     if (deck.length === 0) {
         deck = makeDeck();
@@ -94,6 +98,7 @@ function scoreHand(hand) {
 	return total;
 }
 
+//function to display the card values dynamically on the web page. Each PNG is named in a way that corresponds to the card abbriviation making it generic and applicable to any hand
 function displayPlayerHand(hand) {
     const playerDisplay = document.getElementById('player-hand');
 
@@ -122,6 +127,7 @@ function displayDealerHand(hand, fistCardVisible = false) {
 
 }
 
+//this helper function deals with end of game DOM updates
 function finalMessage (leftButton, rightButton, playAgain) {
     leftButton.style.visibility = 'hidden';
     rightButton.style.visibility = 'hidden';
@@ -132,9 +138,8 @@ function finalMessage (leftButton, rightButton, playAgain) {
 
 
 
-
+//this function starts the game by dealing 4 cards and assigning player and dealer score values
 function playGame(deck, playerHand, dealerHand, playerScore, dealerScore) {
-    let gameResult = "";
 
     shuffle(deck);
     
@@ -149,6 +154,7 @@ function playGame(deck, playerHand, dealerHand, playerScore, dealerScore) {
    return playerScore;
 }
 
+//a function to check if the player has won or busted 
 function checkPlayerScore(playerScore) {
     let gameResult = "";
     if (playerScore === 21) {
@@ -159,6 +165,7 @@ function checkPlayerScore(playerScore) {
     return gameResult;
 }
 
+//a function for the player to hit one card into their hand
 function hit(deck, playerHand, playerScore) {
     dealCard(deck, playerHand);
     displayPlayerHand(playerHand);
@@ -166,6 +173,7 @@ function hit(deck, playerHand, playerScore) {
     return playerScore;
 }
 
+//a function for the dealer to add cards into their hand until they aren't able to
 function stay(deck, dealerHand, dealerScore) {
     displayDealerHand(dealerHand, true);
         dealerScore = scoreHand(dealerHand);
@@ -177,6 +185,7 @@ function stay(deck, dealerHand, dealerScore) {
     return dealerScore;
 }        
 
+//a function to return the final messages of the game... if the player won, tied or lost
 function checkDealerScore(dealerScore, playerScore) {    
             if (dealerScore > 21) {
                 gameResult = 'Dealer Busts';
