@@ -14,7 +14,8 @@ window.addEventListener("load", function() {
     const hideInstructions = document.getElementById('hide-instructions');
     const showInstructions = document.getElementById('show-instructions');
     const instructions = document.getElementById('instructions');
-    const currentScore = document.getElementById('current-total');
+    const currentPlayerScore = document.getElementById('player-total');
+    const currentDealerScore = document.getElementById('dealer-total')
 
     let deck = makeDeck();
     let firstCheck = '';
@@ -40,11 +41,12 @@ window.addEventListener("load", function() {
         <p class="justify">Each card in the hand is worth as many points as the number on it (e.g. 4♣ = 4 points). Face cards are each worth <b>10 points</b> and Aces are worth <b>11 points,</b> unless the <b>total of all other cards in the hand</b> is greater than 10. Then Aces are worth 1 point.</p>
         <p class="justify">How to play:</p>
         <ol>
-            <li>When prompted, click "Start Game!" <b>below</b> the square with the cards in it</li>
+            <li>Enter your name in the input box below to change the player's name. Otherwise hit 'Save' to keep the default of 'Player.'</li>
+            <li>When prompted, click "Start Game!" <b>below</b> the square with the cards in it.</li>
             <li>The player (you) and the dealer will each be dealt two cards from a shuffled deck. The player's cards will both be face up, while one of the dealer's cards will be hidden.</li>
             <li>Decide if you'd like to "Hit" or "Stay" with the buttons below. Pressing "Hit" will add one card to your hand. Pressing "Stay" won't add any cards to your hand and play moves to the dealer. <em>Be careful, hit too many times and you may bust.</em></li>
             <li>The Dealer <b>must continue hitting</b> until they have more than <b>16 points</b> in their hand or they bust.</li>
-            <li>The game is then scored and whomever has the higher score wins.</li>
+            <li>The game is then scored and whomever has the higher score wins. A game result is displayed below the playing space.</li>
             <li>Press the 'Play Again?' button to reset the playing space before pressing 'Start Game!' for a new round.</li>
         </ol>`
         hideInstructions.innerHTML = 'Hide these instructions';
@@ -68,6 +70,8 @@ window.addEventListener("load", function() {
         startGame.style.visibility = 'hidden';
         playerHand = [];
         dealerHand = [];
+        playerScore = 0;
+        dealerScore = 0;
         if (deck.length === 0) {
             deck = makeDeck();
         }
@@ -75,6 +79,7 @@ window.addEventListener("load", function() {
             firstCheck = '';            
         }
         playerScore = playGame(deck, playerHand, dealerHand, playerScore, dealerScore);
+        currentPlayerScore.innerHTML = `Score: ${playerScore}`
         firstCheck = checkPlayerScore(playerScore);
 
         if (firstCheck) {
@@ -85,13 +90,16 @@ window.addEventListener("load", function() {
         leftButton.onclick = function() {
             playerScore = hit(deck, playerHand, playerScore);
             let result = checkPlayerScore(playerScore);
+            currentPlayerScore.innerHTML = `Score: ${playerScore}`
             if (result) {
                 gameMessages.innerHTML = `Game result: ${result}`;
                 finalMessage(leftButton, rightButton, playAgain);
             }
         }
         rightButton.onclick = function() {
-            let result = stay(deck, dealerHand, dealerScore, playerScore);
+            dealerScore = stay(deck, dealerHand, dealerScore, playerScore);
+            currentDealerScore.innerHTML = `Score: ${dealerScore}`
+            let result = checkDealerScore(dealerScore, playerScore);
             gameMessages.innerHTML = `Game result: ${result}`;
             finalMessage(leftButton, rightButton, playAgain);
         }
@@ -100,8 +108,9 @@ window.addEventListener("load", function() {
     playAgain.addEventListener('click', function(){
         dealerCards.innerHTML = '<img src="./card-assets/card-back.png" alt="Card back"><img src="./card-assets/card-back.png" alt="Card back">';
         playerCards.innerHTML = '<img src="./card-assets/card-back.png" alt="Card back"><img src="./card-assets/card-back.png" alt="Card back">';
-        playerScore = 0;
-        dealerScore = 0;
+        currentPlayerScore.innerHTML = '';
+        currentDealerScore.innerHTML = '';
+        gameMessages.innerHTML = '';
         startGame.style.visibility = 'visible';
         playAgain.style.visibility = 'hidden';
     });

@@ -163,20 +163,21 @@ function hit(deck, playerHand, playerScore) {
     dealCard(deck, playerHand);
     displayPlayerHand(playerHand);
     playerScore = scoreHand(playerHand);
-    console.log(playerScore);
     return playerScore;
 }
 
-function stay(deck, dealerHand, dealerScore, playerScore) {
+function stay(deck, dealerHand, dealerScore) {
     displayDealerHand(dealerHand, true);
         dealerScore = scoreHand(dealerHand);
             while (dealerScore <= 16) {
                 dealCard(deck, dealerHand);
                 dealerScore = scoreHand(dealerHand);
                 displayDealerHand(dealerHand, true);
-                console.log(dealerScore);
             }
-            
+    return dealerScore;
+}        
+
+function checkDealerScore(dealerScore, playerScore) {    
             if (dealerScore > 21) {
                 gameResult = 'Dealer Busts';
             } else if (dealerScore < playerScore) {
