@@ -146,20 +146,17 @@ function playGame(deck, playerHand, dealerHand, playerScore, dealerScore) {
     dealerScore = scoreHand(dealerHand);
     playerScore = scoreHand(playerHand);
 
-    if (playerScore === 21) {
-        gameResult = 'Player Wins!';
-    }
-    return gameResult;
+   return playerScore;
 }
 
-function secondCheck(playerScore) {
+function checkPlayerScore(playerScore) {
     let gameResult = "";
     if (playerScore === 21) {
         gameResult = 'Player Wins!';
     } else if (playerScore > 21) {
         gameResult = 'Player Busts';       
     }
-        return gameResult;
+    return gameResult;
 }
 
 function hit(deck, playerHand, playerScore) {

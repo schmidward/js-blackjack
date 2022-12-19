@@ -28,6 +28,7 @@
                 <li>Decide if you'd like to "Hit" or "Stay" with the buttons below. Pressing "Hit" will add one card to your hand. Pressing "Stay" won't add any cards to your hand and play moves to the dealer. <em>Be careful, hit too many times and you may bust.</em></li>
                 <li>The Dealer <b>must continue hitting</b> until they have more than <b>16 points</b> in their hand or they bust.</li>
                 <li>The game is then scored and whomever has the higher score wins.</li>
+                <li>Press the 'Play Again?' button to reset the playing space before pressing 'Start Game!' for a new round.</li>
             </ol>
         </div>
         <button id="hide-instructions" style="visibility: visible">Hide these instructions</button>
@@ -43,7 +44,7 @@
                 <img src="./card-assets/card-back.png" alt="Card back">
                 <img src="./card-assets/card-back.png" alt="Card back">
             </div>
-            <p class="center" id="playerName">Player's Hand</p>
+            <p class="center" id="playerName">Player's Hand <span id="current-total"></span></p>
         </div>
         <div>
             <p id="game-messages">Enter your name if you want, otherwise hit save:</p>

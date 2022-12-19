@@ -14,7 +14,8 @@ window.addEventListener("load", function() {
     const hideInstructions = document.getElementById('hide-instructions');
     const showInstructions = document.getElementById('show-instructions');
     const instructions = document.getElementById('instructions');
-    
+    const currentScore = document.getElementById('current-total');
+
     let deck = makeDeck();
     let firstCheck = '';
     let playerHand = [];
@@ -44,6 +45,7 @@ window.addEventListener("load", function() {
             <li>Decide if you'd like to "Hit" or "Stay" with the buttons below. Pressing "Hit" will add one card to your hand. Pressing "Stay" won't add any cards to your hand and play moves to the dealer. <em>Be careful, hit too many times and you may bust.</em></li>
             <li>The Dealer <b>must continue hitting</b> until they have more than <b>16 points</b> in their hand or they bust.</li>
             <li>The game is then scored and whomever has the higher score wins.</li>
+            <li>Press the 'Play Again?' button to reset the playing space before pressing 'Start Game!' for a new round.</li>
         </ol>`
         hideInstructions.innerHTML = 'Hide these instructions';
         hideInstructions.style.visibility = 'visible';
@@ -72,15 +74,17 @@ window.addEventListener("load", function() {
         if (firstCheck !== ''){
             firstCheck = '';            
         }
-        firstCheck = playGame(deck, playerHand, dealerHand, playerScore, dealerScore);
+        playerScore = playGame(deck, playerHand, dealerHand, playerScore, dealerScore);
+        firstCheck = checkPlayerScore(playerScore);
+
         if (firstCheck) {
             gameMessages.innerHTML = `Game result: ${firstCheck}`;
             finalMessage(leftButton, rightButton, playAgain);
         }
-
+        
         leftButton.onclick = function() {
             playerScore = hit(deck, playerHand, playerScore);
-            let result = secondCheck(playerScore);
+            let result = checkPlayerScore(playerScore);
             if (result) {
                 gameMessages.innerHTML = `Game result: ${result}`;
                 finalMessage(leftButton, rightButton, playAgain);
