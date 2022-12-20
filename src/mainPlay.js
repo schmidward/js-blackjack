@@ -155,12 +155,12 @@ function playGame(deck, playerHand, dealerHand, playerScore, dealerScore) {
 }
 
 //a function to check if the player has won or busted 
-function checkPlayerScore(playerScore) {
+function checkPlayerScore(playerScore, name) {
     let gameResult = "";
     if (playerScore === 21) {
-        gameResult = 'Player Wins!';
+        gameResult = `${name} Wins!`;
     } else if (playerScore > 21) {
-        gameResult = 'Player Busts';       
+        gameResult = `${name} Busts`;       
     }
     return gameResult;
 }
@@ -186,15 +186,15 @@ function stay(deck, dealerHand, dealerScore) {
 }        
 
 //a function to return the final messages of the game... if the player won, tied or lost
-function checkDealerScore(dealerScore, playerScore) {    
+function checkDealerScore(dealerScore, playerScore, name) {    
             if (dealerScore > 21) {
                 gameResult = 'Dealer Busts';
             } else if (dealerScore < playerScore) {
-                gameResult = 'Player Beats';
+                gameResult = `${name} beats Dealer`;
             } else if (dealerScore === playerScore) {
                 gameResult = 'Tie';
             } else {
-                gameResult = 'Dealer Beats';
+                gameResult = `Dealer beats ${name}`;
             }
     return gameResult;
 }

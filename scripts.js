@@ -36,9 +36,9 @@ window.addEventListener("load", function() {
     })
 
     showInstructions.addEventListener('click', function() {
-        instructions.innerHTML = `<div id="inline"><span id="bolder">Rules and instructions</span></div>
+        instructions.innerHTML = `<div class="inline"><span id="bolder">Rules and instructions</span></div>
         <p class="justify"><b>The objective</b> in Blackjack is for the player to <b>beat the dealer</b> with a hand that's as close to 21 points as possible <em>without going over</em>. The player or dealer busts if they go over 21 points.</p>
-        <p class="justify">Each card in the hand is worth as many points as the number on it (e.g. 4♣ = 4 points). Face cards are each worth <b>10 points</b> and Aces are worth <b>11 points,</b> unless the <b>total of all other cards in the hand</b> is greater than 10. Then Aces are worth 1 point.</p>
+        <p class="justify">Each card in the hand is worth as many points as the number on it (e.g. 4♣ = 4 points). Face cards are each worth <b>10 points</b> and Aces are worth <b>11 points,</b> unless the <b>total of all other cards in the hand</b> is greater than 10. Then Aces are worth <b>1 point.</b></p>
         <p class="justify">How to play:</p>
         <ol>
             <li>Enter your name in the input box below to change the player's name. Otherwise hit 'Save' to keep the default of 'Player.'</li>
@@ -49,7 +49,7 @@ window.addEventListener("load", function() {
             <li>The game is then scored and whomever has the higher score wins. A game result is displayed below the playing space.</li>
             <li>Press the 'Play Again?' button to reset the playing space before pressing 'Start Game!' for a new round.</li>
         </ol>`
-        hideInstructions.innerHTML = 'Hide these instructions';
+        hideInstructions.innerHTML = 'Hide instructions';
         hideInstructions.style.visibility = 'visible';
         showInstructions.style.visibility = 'hidden';
     })
@@ -79,8 +79,8 @@ window.addEventListener("load", function() {
             firstCheck = '';            
         }
         playerScore = playGame(deck, playerHand, dealerHand, playerScore, dealerScore);
-        currentPlayerScore.innerHTML = `Score: ${playerScore}`
-        firstCheck = checkPlayerScore(playerScore);
+        currentPlayerScore.innerHTML = `&nbsp;| Score: ${playerScore}`
+        firstCheck = checkPlayerScore(playerScore, nameInput.value);
 
         if (firstCheck) {
             gameMessages.innerHTML = `Game result: ${firstCheck}`;
@@ -89,8 +89,8 @@ window.addEventListener("load", function() {
         
         leftButton.onclick = function() {
             playerScore = hit(deck, playerHand, playerScore);
-            let result = checkPlayerScore(playerScore);
-            currentPlayerScore.innerHTML = `Score: ${playerScore}`
+            let result = checkPlayerScore(playerScore, nameInput.value);
+            currentPlayerScore.innerHTML = `&nbsp;| Score: ${playerScore}`
             if (result) {
                 gameMessages.innerHTML = `Game result: ${result}`;
                 finalMessage(leftButton, rightButton, playAgain);
@@ -98,8 +98,8 @@ window.addEventListener("load", function() {
         }
         rightButton.onclick = function() {
             dealerScore = stay(deck, dealerHand, dealerScore, playerScore);
-            currentDealerScore.innerHTML = `Score: ${dealerScore}`
-            let result = checkDealerScore(dealerScore, playerScore);
+            currentDealerScore.innerHTML = `&nbsp;| Score: ${dealerScore}`
+            let result = checkDealerScore(dealerScore, playerScore, nameInput.value);
             gameMessages.innerHTML = `Game result: ${result}`;
             finalMessage(leftButton, rightButton, playAgain);
         }
