@@ -53,6 +53,7 @@ What are your next steps?
 -------------------------
 
 I'm thinking about adding some boxes to show a tally of the differnet game outcomes and maybe calculate some percentages based on those. I think it would be interesting to know how often each outcome occurs. 
+
   - Player beats Dealer
   - Dealer Beats Player
   - Player Busts
